@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-deep: #ffffff;
+    --accent-primary: #2E7D32;
+    --accent-secondary: #66BB6A;
+    --accent-gold: #D4AF37;
+    --glass-bg: rgba(255, 255, 255, 0.95);
+    --glass-border: rgba(226, 232, 240, 0.8);
+    --text-dim: #475569;
+    --text-main: #1e293b;
+  }
+
+  .dark {
+    --bg-deep: #0a0f0d;
+    --accent-primary: #66BB6A;
+    --accent-secondary: #2E7D32;
+    --accent-gold: #D4AF37;
+    --glass-bg: rgba(13, 20, 17, 0.9);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --text-dim: #94a3b8;
+    --text-main: #f8fafc;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Frosted Glass Class Definitions */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel-hover:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px 0 rgba(129, 140, 248, 0.15);
+}
+
+.light .glass-panel-hover:hover {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 40px 0 rgba(79, 70, 229, 0.08);
+}
+
+/* Animated mesh background */
+.mesh-bg {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 20% 25%, rgba(46, 125, 50, 0.05) 0%, transparent 35%),
+              radial-gradient(circle at 80% 65%, rgba(102, 187, 106, 0.06) 0%, transparent 35%),
+              radial-gradient(circle at 40% 85%, rgba(212, 175, 55, 0.03) 0%, transparent 40%);
+  z-index: -10;
+  pointer-events: none;
+  animation: bg-drift 25s infinite alternate ease-in-out;
+}
+
+.dark .mesh-bg {
+  background: radial-gradient(circle at 20% 25%, rgba(46, 125, 50, 0.15) 0%, transparent 35%),
+              radial-gradient(circle at 80% 65%, rgba(102, 187, 106, 0.12) 0%, transparent 35%),
+              radial-gradient(circle at 40% 85%, rgba(212, 175, 55, 0.08) 0%, transparent 40%);
+}
+
+@keyframes bg-drift {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(5%, 5%) rotate(5deg); }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Hide scrollbars but keep functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

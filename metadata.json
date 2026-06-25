@@ -1,0 +1,8 @@
+{
+  "name": "FIFA HACKUP - Smart Stadium Explorer",
+  "description": "An AI-powered Smart Stadium Operating System & Fan Companion for FIFA World Cup venues. Features real-time ticket booking, in-seat delivery tracking, AI travel guides, multi-agent orchestration, and real-time operations command centers.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
